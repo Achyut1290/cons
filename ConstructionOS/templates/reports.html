@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-4">Project Reports</h2>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <h6>Completed Tasks</h6>
+            <div class="card-number">{{ completed_tasks }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <h6>Open Tasks</h6>
+            <div class="card-number">{{ open_tasks }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <h6>Total Expense</h6>
+            <div class="card-number">₹{{ total_expense }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <h6>Low Stock Items</h6>
+            <div class="card-number">{{ low_stock_count }}</div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>Project</th>
+            <th>Status</th>
+            <th>Budget</th>
+            <th>Spent</th>
+            <th>Progress</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in project_summary %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.status }}</td>
+            <td>₹{{ project.budget }}</td>
+            <td>₹{{ project.spent }}</td>
+            <td>{{ project.progress }}%</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-center">No project report data available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

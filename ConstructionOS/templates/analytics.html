@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-4">Project Analytics</h2>
+
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h6>Total Projects</h6>
+            <div class="card-number">{{ total_projects }}</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h6>Total Tasks</h6>
+            <div class="card-number">{{ total_tasks }}</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h6>Completed</h6>
+            <div class="card-number">{{ completed_tasks }}</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h6>Pending</h6>
+            <div class="card-number">{{ pending_tasks }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3 mb-3">
+            <h5>Budget Status</h5>
+            <p>Total Budget: ₹{{ total_budget }}</p>
+            <p>Total Expense: ₹{{ total_expense }}</p>
+            {% if project_budget_warning %}
+                <div class="alert alert-warning">Budget warning: expenses are above 80% of allocated budget.</div>
+            {% else %}
+                <div class="alert alert-success">Budget is within limit.</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3 mb-3">
+            <h5>Schedule Status</h5>
+            <p>Average Site Progress: {{ avg_progress }}%</p>
+            <div class="alert alert-info">Status: {{ schedule_status }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3 mb-3">
+            <h5>Low Stock Materials</h5>
+            {% if low_stock_materials %}
+                <ul>
+                    {% for item in low_stock_materials %}
+                    <li>{{ item.name }} - Qty: {{ item.quantity }} {{ item.unit }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No low-stock material alert.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3 mb-3">
+            <h5>Overdue Tasks</h5>
+            {% if overdue_tasks %}
+                <ul>
+                    {% for task in overdue_tasks %}
+                    <li>{{ task.title }} - Due: {{ task.due_date }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No overdue tasks.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

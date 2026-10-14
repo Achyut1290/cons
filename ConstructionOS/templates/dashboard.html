@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="dashboard-page">
+    <section class="dashboard-welcome">
+        <div class="welcome-copy">
+            <p class="dashboard-eyebrow">CONSTRUCTION MANAGEMENT</p>
+            <h1>Good to have you here, {{ current_user.name }}.</h1>
+            <p class="welcome-description">Your site overview, project records, and day-to-day tools in one place.</p>
+        </div>
+        <a class="welcome-action" href="/projects/add">
+            <span class="action-plus" aria-hidden="true">+</span>
+            <span>Start a project</span>
+        </a>
+        <div class="welcome-grid" aria-hidden="true"></div>
+    </section>
+
+    <section class="dashboard-overview" aria-label="Project overview">
+        <div class="overview-heading">
+            <div>
+                <p class="section-kicker">AT A GLANCE</p>
+                <h2>Workspace overview</h2>
+            </div>
+            <a class="text-link" href="/reports/">View reports <span aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <div class="overview-grid">
+            <a class="overview-stat stat-projects" href="/projects/">
+                <span class="stat-label">Projects</span>
+                <span class="stat-value">{{ projects }}</span>
+                <span class="stat-note">Your project portfolio</span>
+                <span class="stat-mark" aria-hidden="true">P</span>
+            </a>
+            <a class="overview-stat stat-tasks" href="/tasks/">
+                <span class="stat-label">Tasks</span>
+                <span class="stat-value">{{ tasks }}</span>
+                <span class="stat-note">Work items tracked</span>
+                <span class="stat-mark" aria-hidden="true">T</span>
+            </a>
+            <a class="overview-stat stat-materials" href="/materials/">
+                <span class="stat-label">Materials</span>
+                <span class="stat-value">{{ materials }}</span>
+                <span class="stat-note">Inventory records</span>
+                <span class="stat-mark" aria-hidden="true">M</span>
+            </a>
+            <a class="overview-stat stat-expenses" href="/expenses/">
+                <span class="stat-label">Expenses</span>
+                <span class="stat-value expense-value">₹{{ expenses }}</span>
+                <span class="stat-note">Recorded expenditure</span>
+                <span class="stat-mark" aria-hidden="true">₹</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="dashboard-tools" aria-label="Management tools">
+        <div class="tools-heading">
+            <p class="section-kicker">YOUR WORKSPACE</p>
+            <h2>Management tools</h2>
+            <p>Jump back into the work that keeps your sites moving.</p>
+        </div>
+        <div class="tool-list">
+            <a class="tool-link" href="/projects/">
+                <span class="tool-index">01</span><span class="tool-name">Projects</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/tasks/">
+                <span class="tool-index">02</span><span class="tool-name">Tasks</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/materials/">
+                <span class="tool-index">03</span><span class="tool-name">Materials &amp; inventory</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/labour/">
+                <span class="tool-index">04</span><span class="tool-name">Labour</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/expenses/">
+                <span class="tool-index">05</span><span class="tool-name">Expenses</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/site-updates/">
+                <span class="tool-index">06</span><span class="tool-name">Daily site updates</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/analytics/">
+                <span class="tool-index">07</span><span class="tool-name">Analytics</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="tool-link" href="/reports/">
+                <span class="tool-index">08</span><span class="tool-name">Reports</span><span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <h2>Labour</h2>
+    <a href="/labour/add" class="btn btn-primary">+ Add Labour</a>
+</div>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Daily Wage</th>
+            <th>Working Days</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for worker in labour %}
+        <tr>
+            <td>{{ worker.id }}</td>
+            <td>{{ worker.name }}</td>
+            <td>{{ worker.worker_type }}</td>
+            <td>₹{{ worker.daily_wage }}</td>
+            <td>{{ worker.working_days }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-center">No labour records found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

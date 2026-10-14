@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <h2>Daily Site Updates</h2>
+    <a href="/site-updates/add" class="btn btn-primary">+ Add Update</a>
+</div>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Progress</th>
+            <th>Issues</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for update in updates %}
+        <tr>
+            <td>{{ update.id }}</td>
+            <td>{{ update.update_date }}</td>
+            <td>{{ update.progress }}%</td>
+            <td>{{ update.issues }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" class="text-center">No site updates found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

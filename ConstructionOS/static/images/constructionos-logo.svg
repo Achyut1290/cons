@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1022 620" role="img" aria-labelledby="title">
+  <title id="title">AR monogram</title>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5d783"/>
+      <stop offset=".24" stop-color="#a96808"/>
+      <stop offset=".48" stop-color="#efc15a"/>
+      <stop offset=".72" stop-color="#8e5705"/>
+      <stop offset="1" stop-color="#f1ce76"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="1" dy="5" result="offset"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g fill="url(#gold)" filter="url(#shadow)">
+    <path d="M122 520 307 205h13l188 315h-41L315 272 158 520z"/>
+    <path d="m352 207 44 1 112 249 133-242 41 1-167 306z"/>
+    <path d="M653 211h111c95 0 144 39 144 99 0 58-43 89-117 94l-55 3 96 105c17 18 37 31 59 39l-63 1c-33 0-58-10-82-36L649 385h114c56 0 83-25 83-70 0-46-31-69-86-69h-88L532 520h-43z"/>
+  </g>
+</svg>
